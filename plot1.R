@@ -1,11 +1,12 @@
 #Download data
 fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 if(!file.exists("./Dataset.zip")){download.file(fileUrl,destfile="./Dataset.zip")}
-
-if(!file.exists("./household_power_consumption.txt")){unzip(zipfile="./ExData_Plotting1/Dataset.zip",exdir="./ExData_Plotting1")}
+if(!file.exists("./ExData_Plotting1")){dir.create("./ExData_Plotting1")}
+if(!file.exists("./household_power_consumption.txt")){unzip(zipfile="./Dataset.zip")}
 
 #Read file into R
 data <- read.table("./household_power_consumption.txt", header = T, sep = ";", as.is = T)
+setwd("./ExData_Plotting1")
 data$Date <- as.Date(data$Date, "%d/%m/%Y")
 
 #Subset data between 2007-02-01 and 2007-02-02
